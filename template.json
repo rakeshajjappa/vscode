@@ -141,7 +141,7 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
-                "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]",
+                "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIPAddressName'))]",
                 "[concat('Microsoft.Network/networkSecurityGroups/', variables('networkSecurityGroupName'))]"
             ],
             "properties": {
@@ -153,14 +153,14 @@
                         },
                         "privateIPAllocationMethod": "Dynamic",
                         "publicIpAddress": {
-                            "id": "[resourceId('VSE','Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
+                            "id": "[resourceId('VSE','Microsoft.Network/publicIpAddresses', variables('publicIPAddressName'))]"
                         }
                     }
                 }]
             }
         },
         {
-            "name": "[variables('publicIpAddressName')]",
+            "name": "[variables('publicIPAddressName')]",
             "type": "Microsoft.Network/publicIpAddresses",
             "apiVersion": "2017-08-01",
             "location": "[parameters('location')]",
