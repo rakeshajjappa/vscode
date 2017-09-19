@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "value": "southcentralus"
+            "value": "null"
         },
         "virtualMachineName": {
-            "value": "VSVM"
+            "value": "null"
         },
         "virtualMachineSize": {
             "value": "Standard_D2_v2"
@@ -15,43 +15,43 @@
             "value": "vmadmin"
         },
         "virtualNetworkName": {
-            "value": "VSEvnet621"
+            "value": "null"
         },
         "networkInterfaceName": {
-            "value": "vsvm212"
+            "value": "null"
         },
         "networkSecurityGroupName": {
-            "value": "VSVM-nsg"
+            "value": "null"
         },
         "adminPassword": {
             "value": null
         },
         "storageAccountName": {
-            "value": "vsedisks990"
+            "value": "null"
         },
         "storageAccountType": {
-            "value": "Standard_LRS"
+            "value": "null"
         },
         "diagnosticsStorageAccountName": {
-            "value": "vsediag148"
+            "value": "null"
         },
         "diagnosticsStorageAccountType": {
-            "value": "Standard_LRS"
+            "value": "null"
         },
         "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/vsediag148"
+            "value": "null"
         },
         "addressPrefix": {
-            "value": "10.0.2.0/24"
+            "value": "null"
         },
         "subnetName": {
-            "value": "default"
+            "value": "null"
         },
         "subnetPrefix": {
-            "value": "10.0.2.0/24"
+            "value": "null"
         },
         "publicIpAddressName": {
-            "value": "VSVM-ip"
+            "value": "null"
         },
         "publicIpAddressType": {
             "value": "Dynamic"
