@@ -20,7 +20,7 @@
         }
     },
     "variables": {
-        "vnetId": "[resourceId('VSE','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "vnetId": "[resourceId('VSE','Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'vscodevm')]",
         "nicName": "vscode-nic",
         "addressPrefix": "10.0.0.0/16",
@@ -61,7 +61,7 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "createOption": "fromImage",
+                        "createOption": "FromImage",
                         "vhd": {
                             "uri": "[concat(concat(reference(resourceId('VSE', 'Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('virtualMachineName'), '20170919141342.vhd')]"
                         },
@@ -82,7 +82,7 @@
             "apiVersion": "2015-01-01",
             "type": "Microsoft.Resources/deployments",
             "properties": {
-                "mode": "incremental",
+                "mode": "Incremental",
                 "templateLink": {
                     "uri": "https://gallery.azure.com/artifact/20161101/Microsoft.CustomScriptExtension-arm.2.0.50/Artifacts/MainTemplate.json"
                 },
