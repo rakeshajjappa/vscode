@@ -15,21 +15,8 @@
         "adminUsername": {
             "type": "string"
         },
-        "networkSecurityGroupName": {
-            "type": "string",
-            "defaultValue": "VSVM-nsg"
-        },
         "adminPassword": {
             "type": "securestring"
-        },
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_LRS"
-        },
-
-        "publicIpAddressType": {
-            "type": "string",
-            "defaultValue": "Dynamic"
         }
     },
     "variables": {
