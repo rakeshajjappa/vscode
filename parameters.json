@@ -6,7 +6,7 @@
             "value": "southcentralus"
         },
         "virtualMachineName": {
-            "value": "VSVM"
+            "value": "null"
         },
         "virtualMachineSize": {
             "value": "Standard_D2_v2"
@@ -15,7 +15,7 @@
             "value": "vmadmin"
         },
         "virtualNetworkName": {
-            "value": "VSEvnet621"
+            "value": "vsvm"
         },
         "networkInterfaceName": {
             "value": "vsvm212"
