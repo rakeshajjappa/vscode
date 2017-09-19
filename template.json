@@ -2,15 +2,76 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-
+        "location": {
+            "type": "string"
+        },
         "virtualMachineName": {
             "type": "string"
+        },
+        "virtualMachineSize": {
+            "type": "string",
+            "defaultValue": "Standard_D2_v2",
+            "allowedValues": [
+                "Standard_D2_v2"
+            ]
         },
         "adminUsername": {
             "type": "string"
         },
+        "virtualNetworkName": {
+            "type": "string",
+            "defaultValue": "vsvm"
+        },
+        "networkInterfaceName": {
+            "type": "string",
+            "defaultValue": "vsvm212"
+        },
+        "networkSecurityGroupName": {
+            "type": "string",
+            "defaultValue": "VSVM-nsg"
+        },
         "adminPassword": {
             "type": "securestring"
+        },
+        "storageAccountName": {
+            "type": "string",
+            "defaultValue": "vsedisks990"
+        },
+        "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS"
+        },
+        "diagnosticsStorageAccountName": {
+            "type": "string",
+            "defaultValue": "vsediag148"
+        },
+        "diagnosticsStorageAccountId": {
+            "type": "string",
+            "defaultValue": "Microsoft.Storage/storageAccounts/vsediag148"
+        },
+        "diagnosticsStorageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS"
+        },
+        "addressPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.2.0/24"
+        },
+        "subnetName": {
+            "type": "string",
+            "defaultValue": "default"
+        },
+        "subnetPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.2.0/24"
+        },
+        "publicIpAddressName": {
+            "type": "string",
+            "defaultValue": "VSVM-ip"
+        },
+        "publicIpAddressType": {
+            "type": "string",
+            "defaultValue": "Dynamic"
         }
     },
     "variables": {
