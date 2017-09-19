@@ -2,59 +2,17 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "location": {
-            "value": "null"
-        },
         "virtualMachineName": {
-            "value": "null"
+            "value": "VisualStudio"
         },
         "virtualMachineSize": {
             "value": "Standard_D2_v2"
         },
         "adminUsername": {
-            "value": "vmadmin"
-        },
-        "virtualNetworkName": {
-            "value": "null"
-        },
-        "networkInterfaceName": {
-            "value": "null"
-        },
-        "networkSecurityGroupName": {
-            "value": "null"
+            "value": null
         },
         "adminPassword": {
             "value": null
-        },
-        "storageAccountName": {
-            "value": "null"
-        },
-        "storageAccountType": {
-            "value": "null"
-        },
-        "diagnosticsStorageAccountName": {
-            "value": "null"
-        },
-        "diagnosticsStorageAccountType": {
-            "value": "null"
-        },
-        "diagnosticsStorageAccountId": {
-            "value": "null"
-        },
-        "addressPrefix": {
-            "value": "null"
-        },
-        "subnetName": {
-            "value": "null"
-        },
-        "subnetPrefix": {
-            "value": "null"
-        },
-        "publicIpAddressName": {
-            "value": "null"
-        },
-        "publicIpAddressType": {
-            "value": "Dynamic"
         }
     }
 }
