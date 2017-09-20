@@ -17,6 +17,9 @@
         },
         "adminPassword": {
             "type": "securestring"
+        },
+        "nicName": {
+            "type": "string"
         }
     },
     "variables": {
