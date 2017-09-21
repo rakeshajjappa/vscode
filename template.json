@@ -8,16 +8,16 @@
         "virtualMachineName": {
             "type": "string"
         },
-        
+
         "adminUsername": {
             "type": "string"
         },
-       
+
         "adminPassword": {
             "type": "securestring"
         }
-        
-        
+
+
     },
     "variables": {
         "virtualNetworkName": "[concat(resourceGroup().name, '-vnet')]",
@@ -25,23 +25,22 @@
         "subnetPrefix": "10.0.0.0/24",
         "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
-        "addressPrefix":"10.0.0.0/24",
-        "networkInterfaceName":"[concat(parameters('virtualMachineName'), 'nic')]",
-        "networkSecurityGroupName":"[concat(resourceGroup().name, '-nsq')]",
+        "addressPrefix": "10.0.0.0/24",
+        "networkInterfaceName": "[concat(parameters('virtualMachineName'), 'nic')]",
+        "networkSecurityGroupName": "[concat(resourceGroup().name, '-nsq')]",
         "publicIpAddressName": "[concat(resourceGroup().name, '-', parameters('virtualMachineName'), '-ip')]",
         "publicIpAddressType": "Dynamic",
-        "virtualMachineSize":"Standard_D2_v2",
-        "storageAccountName":"[concat(resourceGroup().name, 'storage', substring(uniquestring(resourceGroup().name),0,3))]",
-        "storageAccountType":"Standard_LRS",
-        "diagnosticsStorageAccountName":"[concat (variables('storageAccountName'), 'diag')]",
-        "diagnosticsStorageAccountId":"[concat ('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-        "diagnosticsStorageAccountType":"Standard_LRS"
+        "virtualMachineSize": "Standard_D2_v2",
+        "storageAccountName": "[concat(resourceGroup().name, 'storage', substring(uniquestring(resourceGroup().name),0,3))]",
+        "storageAccountType": "Standard_LRS",
+        "diagnosticsStorageAccountName": "[concat (variables('storageAccountName'), 'diag')]",
+        "diagnosticsStorageAccountId": "[concat ('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+        "diagnosticsStorageAccountType": "Standard_LRS"
 
-        
+
 
     },
-    "resources": [
-        {
+    "resources": [{
             "name": "[parameters('virtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2016-04-30-preview",
@@ -80,11 +79,9 @@
                     "dataDisks": []
                 },
                 "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
-                        }
-                    ]
+                    "networkInterfaces": [{
+                        "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+                    }]
                 },
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
@@ -111,7 +108,7 @@
                         "value": "[parameters('location')]"
                     },
                     "fileUris": {
-                        "value": "https://github.com/SrivatsaMarichi/vscode/blob/master/VSCode.ps1"
+                        "value": "https://raw.githubusercontent.com/SrivatsaMarichi/vscode/master/VSCode.ps1"
                     }
                 }
             },
@@ -148,14 +145,12 @@
                         "[variables('addressPrefix')]"
                     ]
                 },
-                "subnets": [
-                    {
-                        "name": "[variables('subnetName')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetPrefix')]"
-                        }
+                "subnets": [{
+                    "name": "[variables('subnetName')]",
+                    "properties": {
+                        "addressPrefix": "[variables('subnetPrefix')]"
                     }
-                ]
+                }]
             }
         },
         {
@@ -169,20 +164,18 @@
                 "[concat('Microsoft.Network/networkSecurityGroups/', variables('networkSecurityGroupName'))]"
             ],
             "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIpAddress": {
-                                "id": "[resourceId(resourceGroup().name,'Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
-                            }
+                "ipConfigurations": [{
+                    "name": "ipconfig1",
+                    "properties": {
+                        "subnet": {
+                            "id": "[variables('subnetRef')]"
+                        },
+                        "privateIPAllocationMethod": "Dynamic",
+                        "publicIpAddress": {
+                            "id": "[resourceId(resourceGroup().name,'Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
                         }
                     }
-                ],
+                }],
                 "networkSecurityGroup": {
                     "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
                 }
@@ -203,21 +196,19 @@
             "apiVersion": "2017-06-01",
             "location": "[parameters('location')]",
             "properties": {
-                "securityRules": [
-                    {
-                        "name": "default-allow-rdp",
-                        "properties": {
-                            "priority": 1000,
-                            "protocol": "TCP",
-                            "access": "Allow",
-                            "direction": "Inbound",
-                            "sourceAddressPrefix": "*",
-                            "sourcePortRange": "*",
-                            "destinationAddressPrefix": "*",
-                            "destinationPortRange": "3389"
-                        }
+                "securityRules": [{
+                    "name": "default-allow-rdp",
+                    "properties": {
+                        "priority": 1000,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "3389"
                     }
-                ]
+                }]
             }
         }
     ],
