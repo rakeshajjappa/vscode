@@ -3,17 +3,17 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "value": "null"
+            "value": ""
         },
-        "vmName": {
-            "value": "vmadmin"
+        "virtualMachineName": {
+            "value": ""
         },
-        "adminUsername": {
-            "value": "null"
+         "adminUsername": {
+            "value": ""
         },
         "adminPassword": {
-            "value": "null"
-        }
-
-    }
+            "value": ""
+        }     
+        
+    }     
 }
