@@ -90,7 +90,7 @@
             }
         },
         {
-            "name": "Microsoft.CustomScriptExtension-20170921123525",
+            "name": "Microsoft.CustomScriptExtension",
             "apiVersion": "2015-01-01",
             "type": "Microsoft.Resources/deployments",
             "properties": {
