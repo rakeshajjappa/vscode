@@ -20,10 +20,10 @@
         }
     },
     "variables": {
-        "vnetId": "[resourceId('VSE','Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
-        "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'vscodevm')]",
+        "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+        "storageAccountName": "vscodevm",
         "storageAccountType": "Standard_LRS",
-        "nicName": "vscode-nic",
+        "networkInterfaceName": "vscode-nic",
         "networkSecurityGroupName": "vscode-nsg",
         "addressPrefix": "10.0.0.0/16",
         "subnetName": "Subnet",
@@ -40,7 +40,7 @@
             "apiVersion": "2016-04-30-preview",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]",
+                "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]",
                 "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
 
             ],
@@ -74,7 +74,7 @@
                 },
                 "networkProfile": {
                     "networkInterfaces": [{
-                        "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
+                        "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
                     }]
 
                 }
@@ -135,7 +135,7 @@
             }
         },
         {
-            "name": "[variables('nicName')]",
+            "name": "[variables('networkInterfaceName')]",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2016-09-01",
             "location": "[parameters('location')]",
