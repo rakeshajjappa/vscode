@@ -81,7 +81,7 @@
             }
         },
         {
-            "name": "Microsoft.CustomScriptExtension-20170919141337",
+            "name": "Microsoft.CustomScriptExtension",
             "apiVersion": "2015-01-01",
             "type": "Microsoft.Resources/deployments",
             "properties": {
@@ -91,7 +91,7 @@
                 },
                 "parameters": {
                     "vmName": {
-                        "value": "null"
+                        "value": "vmadmin"
                     },
                     "location": {
                         "value": "South Central US"
