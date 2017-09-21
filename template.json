@@ -171,8 +171,6 @@
                 "publicIpAllocationMethod": "[variables('publicIpAddressType')]"
             }
         }
-
-
     ],
     "outputs": {
         "adminUsername": {
