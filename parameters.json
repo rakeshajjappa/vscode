@@ -5,7 +5,7 @@
         "location": {
             "value": "null"
         },
-        "virtualMachineName": {
+        "vmName": {
             "value": "null"
         },
         "adminUsername": {

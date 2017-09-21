@@ -5,7 +5,7 @@
         "location": {
             "type": "string"
         },
-        "virtualMachineName": {
+        "vmName": {
             "type": "string"
         },
         "virtualMachineSize": {
@@ -35,7 +35,7 @@
         "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
     },
     "resources": [{
-            "name": "[parameters('virtualMachineName')]",
+            "name": "[parameters('vmName')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2016-04-30-preview",
             "location": "[parameters('location')]",
@@ -46,7 +46,7 @@
             ],
             "properties": {
                 "osProfile": {
-                    "computerName": "[parameters('virtualMachineName')]",
+                    "computerName": "[parameters('vmName')]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
@@ -66,9 +66,9 @@
                     "osDisk": {
                         "createOption": "FromImage",
                         "vhd": {
-                            "uri": "[concat(concat(reference(resourceId('VSE', 'Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('virtualMachineName'), '20170919141342.vhd')]"
+                            "uri": "[concat(concat(reference(resourceId('VSE', 'Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('vmName'), '20170919141342.vhd')]"
                         },
-                        "name": "[parameters('virtualMachineName')]"
+                        "name": "[parameters('vmName')]"
                     },
                     "dataDisks": []
                 },
@@ -90,7 +90,7 @@
                     "uri": "https://gallery.azure.com/artifact/20161101/Microsoft.CustomScriptExtension-arm.2.0.50/Artifacts/MainTemplate.json"
                 },
                 "parameters": {
-                    "virtualMachineName": {
+                    "vmName": {
                         "value": "null"
                     },
                     "location": {
@@ -102,7 +102,7 @@
                 }
             },
             "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
             ]
         },
         {
