@@ -2,9 +2,7 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "location": {
-            "type": "string"
-        },
+
         "virtualMachineName": {
             "type": "string"
         },
@@ -44,7 +42,7 @@
             "name": "[parameters('virtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2016-04-30-preview",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]",
                 "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
@@ -70,7 +68,7 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "createOption": "fromImage",
+                        "createOption": "FromImage",
                         "vhd": {
                             "uri": "[concat(concat(reference(resourceId(resourceGroup().name,'Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), parameters('virtualMachineName'), '20170921123530.vhd')]"
                         },
@@ -96,7 +94,7 @@
             "apiVersion": "2015-01-01",
             "type": "Microsoft.Resources/deployments",
             "properties": {
-                "mode": "incremental",
+                "mode": "Incremental",
                 "templateLink": {
                     "uri": "https://gallery.azure.com/artifact/20161101/Microsoft.CustomScriptExtension-arm.2.0.50/Artifacts/MainTemplate.json"
                 },
@@ -105,7 +103,7 @@
                         "value": "[parameters('virtualMachineName')]"
                     },
                     "location": {
-                        "value": "[parameters('location')]"
+                        "value": "[resourceGroup().location]"
                     },
                     "fileUris": {
                         "value": "https://raw.githubusercontent.com/SrivatsaMarichi/vscode/master/VSCode.ps1"
@@ -120,7 +118,7 @@
             "name": "[variables('storageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2015-06-15",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "accountType": "[variables('storageAccountType')]"
             }
@@ -129,7 +127,7 @@
             "name": "[variables('diagnosticsStorageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2015-06-15",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "accountType": "[variables('diagnosticsStorageAccountType')]"
             }
@@ -138,7 +136,7 @@
             "name": "[variables('virtualNetworkName')]",
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2016-12-01",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
@@ -157,7 +155,7 @@
             "name": "[variables('networkInterfaceName')]",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2016-09-01",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
                 "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]",
@@ -185,7 +183,7 @@
             "name": "[variables('publicIpAddressName')]",
             "type": "Microsoft.Network/publicIpAddresses",
             "apiVersion": "2017-08-01",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "publicIpAllocationMethod": "[variables('publicIpAddressType')]"
             }
@@ -194,7 +192,7 @@
             "name": "[variables('networkSecurityGroupName')]",
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2017-06-01",
-            "location": "[parameters('location')]",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "securityRules": [{
                     "name": "default-allow-rdp",
