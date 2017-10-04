@@ -64,7 +64,7 @@
                     "imageReference": {
                         "publisher": "MicrosoftVisualStudio",
                         "offer": "VisualStudio",
-                        "sku": "VS-2017-Ent-Win10-N",
+                        "sku": "VS-2017-Ent-WS2016",
                         "version": "latest"
                     },
                     "osDisk": {
